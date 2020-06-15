@@ -1,7 +1,11 @@
 package com.htp.dao;
 
+import com.htp.domain.User;
+
+
 import java.util.List;
 
-public class UserDao {
-    List < > findAll;
+public interface UserDao {
+
+    List <User> findAll();
 }
