@@ -32,7 +32,7 @@ public class UserDaoImpl implements UserDao {
 
 
 
-    
+
     @Override
     public List<User> findAll() {
         final String findAllQuery = "select * from m_users order by id desc";
