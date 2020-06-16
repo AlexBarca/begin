@@ -29,6 +29,8 @@ public class UserDaoImpl implements UserDao {
     public static final String USER_PHONE = "phone";
     public static final String USER_EMAIL = "email";
 
+
+    
     @Override
     public List<User> findAll() {
         final String findAllQuery = "select * from m_users order by id desc";
