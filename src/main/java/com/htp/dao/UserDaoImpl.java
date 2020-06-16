@@ -30,6 +30,8 @@ public class UserDaoImpl implements UserDao {
     public static final String USER_EMAIL = "email";
 
 
+
+
     
     @Override
     public List<User> findAll() {
