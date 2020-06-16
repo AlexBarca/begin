@@ -21,6 +21,8 @@ public class FrontController extends HttpServlet {
         doRequest(req, resp);
     }
 
+
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doRequest(req, resp);
