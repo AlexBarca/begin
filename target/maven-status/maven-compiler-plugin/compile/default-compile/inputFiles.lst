@@ -1,6 +1,7 @@
 C:\Users\Alexandr\IdeaProjects\begin\src\main\java\com\htp\listener\StartApplicationListener.java
 C:\Users\Alexandr\IdeaProjects\begin\src\main\java\com\htp\dao\UserDao.java
 C:\Users\Alexandr\IdeaProjects\begin\src\main\java\com\htp\dao\UserDaoImpl.java
+C:\Users\Alexandr\IdeaProjects\begin\src\main\java\com\htp\exceptions\ResourceNotFoundException.java
 C:\Users\Alexandr\IdeaProjects\begin\src\main\java\com\htp\domain\User.java
 C:\Users\Alexandr\IdeaProjects\begin\src\main\java\com\htp\util\DataBaseConfiguration.java
 C:\Users\Alexandr\IdeaProjects\begin\src\main\java\com\htp\Main.java

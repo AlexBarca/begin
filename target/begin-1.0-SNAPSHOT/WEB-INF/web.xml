@@ -32,6 +32,11 @@
     </servlet>
 
     <servlet>
+        <servlet-name>Errors</servlet-name>
+        <jsp-file>/WEB-INF/jsp/errors.jsp</jsp-file>
+    </servlet>
+
+    <servlet>
         <servlet-name>ByeByeWeb</servlet-name>
         <jsp-file>/WEB-INF/jsp/bye.jsp</jsp-file>
     </servlet>
@@ -39,6 +44,11 @@
     <servlet-mapping>
         <servlet-name>HelloWeb</servlet-name>
         <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Errors</servlet-name>
+        <url-pattern>/errors</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>

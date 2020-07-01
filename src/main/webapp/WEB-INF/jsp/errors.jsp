@@ -1,11 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Bye bye!</title>
+    <title>Error!</title>
 </head>
 <body>
-${userNames}
-
+${errors}
 
 </body>
 </html>
