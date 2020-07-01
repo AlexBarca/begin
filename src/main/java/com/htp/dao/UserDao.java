@@ -19,6 +19,7 @@ public interface UserDao {
     User findOne  (Long userId);
     User save (User user);
     User update (User user);
+//    User  delete (User user);
     int delete (User user);
 
 }

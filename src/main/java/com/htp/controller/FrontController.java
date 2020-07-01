@@ -25,6 +25,8 @@ public class FrontController extends HttpServlet {
     public static final String FIND_ALL="findAll";
     public static final String SAVE="save";
     public static final String UPDATE="update";
+    public static final String DELETE="delete";
+
 
 
     private UserDao userDao = new UserDaoImpl();
@@ -33,11 +35,6 @@ public class FrontController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doRequest(req, resp);
     }
-
-
-
-
-
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -59,9 +56,12 @@ public class FrontController extends HttpServlet {
             System.out.println("Forward will be done!");
 
             switch (typeOfSearch){
+
                 case FIND_ONE:
+
                     result=userDao.findOne(Long.parseLong(searchQuery)).getLogin();
                     break;
+
                 case FIND_BY_ID:
 //                    первый вариант Optional
 //                    result=userDao.findById(Long.parseLong(searchQuery)).orElseThrow(ResourceNotFoundException::new).getLogin();
@@ -70,13 +70,12 @@ public class FrontController extends HttpServlet {
                     if (optionalUser.isPresent()){
                         result=optionalUser.get().getLogin();
                     }
-
                     break;
 
                 case SAVE:
+
                     User user = new User();
                     /*5. Columns mapping*/
-
                     user.setFirstName(userName);
                     user.setLastName(userName);
                     user.setBirthDate(new java.sql.Date(new java.util.Date().getTime()));
@@ -87,12 +86,11 @@ public class FrontController extends HttpServlet {
                     user.setChanged(new Timestamp(new java.util.Date().getTime()));
                     user.setPhone(UUID.randomUUID().toString());
                     user.setEmail(UUID.randomUUID().toString());
-
-
-            result=userDao.save(user).getLogin();
+                    result=userDao.save(user).getLogin();
                     break;
 
                 case UPDATE:
+
                     User userForUpdate = userDao.findOne(Long.parseLong(searchQuery));
                     /*5. Columns mapping*/
 
@@ -104,7 +102,23 @@ public class FrontController extends HttpServlet {
                     result=userDao.update(userForUpdate).getLogin();
                     break;
 
+                case DELETE:
+
+                    User userDelete = userDao.findOne(Long.parseLong(searchQuery));
+                    /*5. Columns mapping*/
+
+                    userDelete.setId(Long.parseLong(searchQuery));
+
+//                    userDelete.setId(Long.parseLong(userName));
+
+
+
+                    userDao.delete(userDelete);
+//                    result=userDao.delete(Long.parseLong(userDelete));
+                    break;
+
                 case FIND_ALL :
+
                 default:
                     result=userDao.findAll().stream().map(User::getLogin).collect(Collectors.joining(","));
                     break;

@@ -210,13 +210,40 @@ public class UserDaoImpl implements UserDao {
 
             return findOne(user.getId());
         } catch (SQLException e) {
-            throw  new RuntimeException("Some issues in insert operation", e);
+            throw  new RuntimeException("Some issues in update operation", e);
         }
     }
 
     @Override
-    public int delete(User user) {
-        return 0;
+    public int delete (User user) {
+        int status=0;
+        final String deleteQuery = "DELETE  FROM  m_users WHERE  id = ?";
+
+        String driverName = config.getProperty(DATABASE_DRIVER_NAME);
+        String url = config.getProperty(DATABASE_URL);
+        String login = config.getProperty(DATABASE_LOGIN);
+        String databasePassword = config.getProperty(DATABASE_PASSWORD);
+
+        /*1. Load driver*/
+        try {
+            Class.forName(driverName);
+        } catch (ClassNotFoundException e) {
+            System.out.println("Don't worry:)");
+        }
+        try (Connection connection = DriverManager.getConnection(url, login, databasePassword);
+                /*3. Get statement from connection*/
+             PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery);
+        ) {
+
+            preparedStatement.setLong(1, user.getId());
+
+            status= preparedStatement.executeUpdate() ;
+
+
+            return  status;
+        } catch (SQLException e) {
+            throw  new RuntimeException("Some issues in delete operation", e);
+        }
     }
 
     private User parseResultSet(ResultSet resultSet) throws SQLException {
