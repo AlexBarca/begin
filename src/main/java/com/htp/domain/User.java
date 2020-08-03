@@ -1,9 +1,13 @@
 package com.htp.domain;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.sql.Timestamp;
 import java.sql.Date;
 import java.util.Objects;
 
+@Component ("user")
 public class User {
     private Long id;
     private String firstName;
@@ -16,6 +20,28 @@ public class User {
     private Timestamp  changed;
     private String  phone;
     private String  email;
+
+    @Autowired
+    private Role role;
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+
+
+    public User(Long id, String firstName, String lastName, String login, String password) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.login = login;
+        this.password = password;
+
+    }
 
     public User() {
     }
@@ -123,12 +149,13 @@ public class User {
                 Objects.equals(created, user.created) &&
                 Objects.equals(changed, user.changed) &&
                 Objects.equals(phone, user.phone) &&
-                Objects.equals(email, user.email);
+                Objects.equals(email, user.email) &&
+                Objects.equals(role, user.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, birthDate, login, password, address, created, changed, phone, email);
+        return Objects.hash(id, firstName, lastName, birthDate, login, password, address, created, changed, phone, email, role);
     }
 
     @Override
@@ -145,6 +172,7 @@ public class User {
                 ", changed=" + changed +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
+                ", role=" + role +
                 '}';
     }
 }
