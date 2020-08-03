@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 import java.sql.Date;
 import java.util.Objects;
 
-@Component ("user")
+
 public class User {
     private Long id;
     private String firstName;
@@ -21,7 +21,7 @@ public class User {
     private String  phone;
     private String  email;
 
-    @Autowired
+
     private Role role;
 
     public Role getRole() {

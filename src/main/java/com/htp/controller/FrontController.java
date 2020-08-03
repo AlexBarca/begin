@@ -5,6 +5,9 @@ import com.htp.dao.UserDaoImpl;
 import com.htp.domain.User;
 import com.htp.exceptions.ResourceNotFoundException;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,6 +21,7 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+@Component
 public class FrontController extends HttpServlet {
 
     public static final String FIND_ONE="findOne";
@@ -27,9 +31,13 @@ public class FrontController extends HttpServlet {
     public static final String UPDATE="update";
     public static final String DELETE="delete";
 
+    @Autowired
+    @Qualifier("userDaoImpl")
 
-
-    private UserDao userDao = new UserDaoImpl();
+// it is not Autowired
+    private UserDao userDao;
+//    It  works
+//    private UserDao userDao = new UserDaoImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
