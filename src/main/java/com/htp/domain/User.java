@@ -22,15 +22,8 @@ public class User {
     private String  email;
 
 
-    private Role role;
 
-    public Role getRole() {
-        return role;
-    }
 
-    public void setRole(Role role) {
-        this.role = role;
-    }
 
 
 
@@ -149,13 +142,12 @@ public class User {
                 Objects.equals(created, user.created) &&
                 Objects.equals(changed, user.changed) &&
                 Objects.equals(phone, user.phone) &&
-                Objects.equals(email, user.email) &&
-                Objects.equals(role, user.role);
+                Objects.equals(email, user.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, birthDate, login, password, address, created, changed, phone, email, role);
+        return Objects.hash(id, firstName, lastName, birthDate, login, password, address, created, changed, phone, email);
     }
 
     @Override
@@ -172,7 +164,6 @@ public class User {
                 ", changed=" + changed +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
-                ", role=" + role +
                 '}';
     }
 }

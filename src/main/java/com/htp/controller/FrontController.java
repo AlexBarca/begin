@@ -21,7 +21,7 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-@Component
+
 public class FrontController extends HttpServlet {
 
     public static final String FIND_ONE="findOne";
@@ -31,13 +31,8 @@ public class FrontController extends HttpServlet {
     public static final String UPDATE="update";
     public static final String DELETE="delete";
 
-    @Autowired
-    @Qualifier("userDaoImpl")
 
-// it is not Autowired
-    private UserDao userDao;
-//    It  works
-//    private UserDao userDao = new UserDaoImpl();
+    private UserDao userDao = new UserDaoImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
